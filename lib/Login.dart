@@ -11,10 +11,22 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [Text('Login Page')],
+      backgroundColor: Colors.black,
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              color: Colors.white,
+            ),
+            height: 400,
+            width: 800,
+            child: Column(children: [
+
+            ],
+          ),
+          ),
         ),
       ),
     );

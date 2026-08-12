@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:horas/Login.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: null);
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Login());
     //trocar o null depois
   }
 }
