@@ -20,12 +20,18 @@ class _LoginState extends State<Login> {
               borderRadius: BorderRadius.circular(16),
               color: Colors.white,
             ),
-            height: 400,
+            height: 800,
             width: 800,
-            child: Column(children: [
-
-            ],
-          ),
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/NeryHourC.png',
+                  width: 300,
+                  height: 200,
+                  fit: BoxFit.cover, // Ajusta a imagem ao espaço disponível
+                ),
+              ],
+            ),
           ),
         ),
       ),
