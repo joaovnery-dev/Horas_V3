@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horas/Reutilizaveis/Textfield.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -8,6 +9,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +33,15 @@ class _LoginState extends State<Login> {
                   height: 200,
                   fit: BoxFit.cover, // Ajusta a imagem ao espaço disponível
                 ),
+
+                SizedBox(height: 20),
+                Text(
+                  'Bem-vindo ao NeryHour',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 20),
+
+                Texto(controller: emailController, labelText: 'Email'),
               ],
             ),
           ),
