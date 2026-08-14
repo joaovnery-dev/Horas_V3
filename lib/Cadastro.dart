@@ -23,9 +23,14 @@ class CadastroState extends State<Cadastro> {
               children: [
                 Image.asset(
                   "assets/NeryHourC.png",
-                  width: 50,
-                  height: 50,
-                  fit: BoxFit.contain,
+                  width: 150,
+                  height: 170,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(height: 40),
+                Text(
+                  'Cadastro',
+                  style: TextStyle(fontSize: 30, color: Colors.black),
                 ),
               ],
             ),
