@@ -1,33 +1,60 @@
 import 'package:flutter/material.dart';
 
-class Texto extends StatelessWidget {
+class Texto extends StatefulWidget {
   final TextEditingController controller;
   final String labelText;
   final String hintText;
+  final bool esenha;
   const Texto({
     super.key,
+    required this.esenha,
     required this.controller,
     required this.labelText,
     required this.hintText,
   });
 
+  State<Texto> createState() => TextoState();
+}
+
+class TextoState extends State<Texto> {
+  late bool senha;
+  late bool senhav;
+  void initState() {
+    super.initState();
+    senha = widget.esenha;
+    senhav = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
+      controller: widget.controller,
+      obscureText: senhav ? true : false,
       style: const TextStyle(
         fontSize: 16.0,
         color: Colors.black87,
         fontWeight: FontWeight.w500,
       ),
+
       decoration: InputDecoration(
-        labelText: labelText,
+        suffixIcon: senha
+            ? IconButton(
+                icon: Icon(senhav ? Icons.visibility_off : Icons.visibility),
+                onPressed: () {
+                  setState(() {
+                    senhav = !senhav; // Alterna entre aberto e fechado
+                  });
+                },
+              )
+            : null,
+
+        labelText: widget.labelText,
         labelStyle: const TextStyle(
           fontSize: 14.0,
           fontWeight: FontWeight.w600,
           color: Colors.blueGrey,
         ),
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14.0),
         filled: true,
         fillColor: Colors.grey[50],
