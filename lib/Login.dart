@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:horas/Cadastro.dart';
 import 'package:horas/Reutilizaveis/Textfield.dart';
 
 class Login extends StatefulWidget {
@@ -70,7 +71,12 @@ class _LoginState extends State<Login> {
 
                 SizedBox(height: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Cadastro()),
+                    );
+                  },
                   child: Text(
                     "Não tem conta? cadastre-se",
                     style: TextStyle(fontSize: 15, color: Colors.blue),
