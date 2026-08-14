@@ -55,6 +55,55 @@ class _LoginState extends State<Login> {
                   hintText: 'Digite sua senha',
                 ),
                 SizedBox(height: 20),
+
+                GestureDetector(
+                  onTap: () {
+                    // Ação ao clicar no botão de login
+                  },
+                  child: Image.asset(
+                    'assets/google.png',
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+
+                SizedBox(height: 20),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Não tem conta? cadastre-se",
+                    style: TextStyle(fontSize: 15, color: Colors.blue),
+                  ),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(
+                      0xFF6366F1,
+                    ), // Azul Indigo moderno
+                    foregroundColor: Colors.white, // Cor do texto
+                    elevation: 3, // Sombra sutil
+                    shadowColor: const Color(
+                      0xFF6366F1,
+                    ).withOpacity(0.4), // Sombra colorida suave
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        16,
+                      ), // Cantos arredondados premium
+                    ),
+                  ),
+                  child: const Text(
+                    'Entrar',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight
+                          .w600, // Negrito elegante (não muito grosso)
+                      letterSpacing: 0.5, // Leve espaçamento entre letras
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
