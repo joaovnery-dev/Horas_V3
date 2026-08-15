@@ -71,6 +71,23 @@ class CadastroState extends State<Cadastro> {
                   labelText: 'Confirme sua senha',
                   hintText: 'Digite a sua senha novamente',
                 ),
+                SizedBox(height: 40),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: () {
+                    // Ação do botão
+                  },
+                  child: Text(
+                    'Cadastrar',
+                    style: TextStyle(fontSize: 20, color: Colors.black),
+                  ),
+                ),
               ],
             ),
           ),
