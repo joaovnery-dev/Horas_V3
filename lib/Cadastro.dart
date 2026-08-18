@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:horas/Reutilizaveis/Textfield.dart';
+import 'package:horas/FireServices/FireAuth.dart';
 
 class Cadastro extends StatefulWidget {
   State<Cadastro> createState() => CadastroState();
 }
 
 class CadastroState extends State<Cadastro> {
+  Auth auth = Auth();
   TextEditingController senha = TextEditingController();
   TextEditingController csenha = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -80,8 +82,42 @@ class CadastroState extends State<Cadastro> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     // Ação do botão
+                    String? result = await auth.Register(
+                      nome.text,
+                      email.text,
+                      senha.text,
+                    );
+                    if (nome.text.isEmpty ||
+                        email.text.isEmpty ||
+                        senha.text.isEmpty ||
+                        csenha.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Por favor, preencha todos os campos."),
+                        ),
+                      );
+                    } else {
+                      if (result != null) {
+                        // Exibir mensagem de erro
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text(result)));
+                      } else {
+                        if (senha.text != csenha.text) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("As senhas não coincidem.")),
+                          );
+                        } else {
+                          // Registro bem-sucedido
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Registro bem-sucedido!")),
+                          );
+                        }
+                        // Registro bem-sucedido
+                      }
+                    }
                   },
                   child: Text(
                     'Cadastrar',

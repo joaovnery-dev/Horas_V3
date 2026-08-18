@@ -3,12 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 
 class Auth {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  User? get user => _auth.currentUser;
-  String? get uid => _auth.currentUser?.uid;
 
-  String? login(String email, String password) {
+  Future<String?> login(String email, String password) async {
     try {
-      _auth.signInWithEmailAndPassword(email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
       return null;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-credential') {
@@ -31,13 +29,44 @@ class Auth {
     }
   }
 
-  String? Register(String nome, String email, String password) {
+  Future<String?> Register(String nome, String email, String password) async {
     try {
-      _auth.createUserWithEmailAndPassword(email: email, password: password);
-      user?.updateDisplayName(nome);
+      await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      await _auth.currentUser?.updateDisplayName(nome);
       return null;
     } on FirebaseAuthException catch (e) {
       return e.message ?? "Erro no registro";
+    } catch (e) {
+      return "Erro desconhecido: $e";
+    }
+  }
+
+  Future<String?> resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      return null;
+    } on FirebaseAuthException catch (e) {
+      return e.message ?? "Erro ao enviar e-mail de redefinição de senha";
+    } catch (e) {
+      return "Erro desconhecido: $e";
+    }
+  }
+
+  Future<void> logout() async {
+    await _auth.signOut();
+  }
+
+  Future<String?> excluirConta({required String senha}) async {
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: _auth.currentUser!.email!,
+        password: senha,
+      );
+      await _auth.currentUser!.delete();
+      return null;
     } catch (e) {
       return "Erro desconhecido: $e";
     }
