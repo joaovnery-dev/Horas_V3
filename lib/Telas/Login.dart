@@ -101,8 +101,7 @@ class _LoginState extends State<Login> {
                         ),
                       );
                     } else {
-                      print("Login bem-sucedido");
-                      await Navigator.push(
+                      await Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => Home()),
                       );
