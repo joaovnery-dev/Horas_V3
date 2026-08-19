@@ -1,4 +1,17 @@
 {
     "cmake.sourceDirectory": "/home/jota/Área de trabalho/projectsFlutter/Horas_V3/horas_work/horas/linux",
-    "folder-color.pathColors": []
+    "folder-color.pathColors": [
+        {
+            "folderPath": "horas/lib/Telas/",
+            "color": "foldercolorizer.color_d7ff00"
+        },
+        {
+            "folderPath": "horas/lib/FireServices/",
+            "color": "foldercolorizer.color_ff8700"
+        },
+        {
+            "folderPath": "horas/lib/Reutilizaveis/",
+            "color": "foldercolorizer.color_00d7ff"
+        }
+    ]
 }

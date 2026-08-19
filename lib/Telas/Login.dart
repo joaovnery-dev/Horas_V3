@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:horas/Cadastro.dart';
+import 'package:horas/Telas/Cadastro.dart';
 import 'package:horas/Reutilizaveis/Textfield.dart';
+import 'package:horas/FireServices/FireAuth.dart';
+import 'package:horas/Telas/Home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,6 +12,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Auth auth = Auth();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -84,7 +87,27 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    String? result = await auth.login(
+                      emailController.text,
+                      passwordController.text,
+                    );
+                    if (result != null) {
+                      // Exibir mensagem de erro
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(result),
+                          backgroundColor: Colors.red,
+                        ),
+                      );
+                    } else {
+                      print("Login bem-sucedido");
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(
                       0xFF6366F1,

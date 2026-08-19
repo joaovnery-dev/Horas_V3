@@ -96,6 +96,7 @@ class CadastroState extends State<Cadastro> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text("Por favor, preencha todos os campos."),
+                          backgroundColor: Colors.red,
                         ),
                       );
                     } else {
@@ -107,13 +108,22 @@ class CadastroState extends State<Cadastro> {
                       } else {
                         if (senha.text != csenha.text) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("As senhas não coincidem.")),
+                            SnackBar(
+                              content: Text("As senhas não coincidem."),
+                              backgroundColor: Colors.red,
+                            ),
                           );
                         } else {
                           // Registro bem-sucedido
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Registro bem-sucedido!")),
+                            SnackBar(
+                              content: Text("Registro bem-sucedido!"),
+                              backgroundColor: Colors.green,
+                            ),
                           );
+                          Future.delayed(Duration(seconds: 2), () {
+                            Navigator.pop(context);
+                          });
                         }
                         // Registro bem-sucedido
                       }
