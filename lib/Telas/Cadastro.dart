@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:horas/Reutilizaveis/Textfield.dart';
 import 'package:horas/FireServices/FireAuth.dart';
 
@@ -30,6 +29,20 @@ class CadastroState extends State<Cadastro> {
             height: 800,
             child: Column(
               children: [
+               
+                  Row(
+                  
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.arrow_back,color: Colors.black,),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+              
                 Image.asset(
                   "assets/NeryHourC.png",
                   width: 150,
