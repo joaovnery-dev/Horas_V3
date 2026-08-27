@@ -22,14 +22,14 @@ class TextoState extends State<Texto> {
   void initState() {
     super.initState();
     senha = widget.esenha;
-    senhav = false;
+    senhav = true;
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
-      obscureText: senhav ? true : false,
+      obscureText: senha ? senhav ? true : false : false,
       style: const TextStyle(
         fontSize: 16.0,
         color: Colors.black87,
