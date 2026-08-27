@@ -3,6 +3,7 @@ import 'package:horas/Telas/Cadastro.dart';
 import 'package:horas/Reutilizaveis/Textfield.dart';
 import 'package:horas/FireServices/FireAuth.dart';
 import 'package:horas/Telas/Home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -103,7 +104,7 @@ class _LoginState extends State<Login> {
                     } else {
                       await Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => Home()),
+                        MaterialPageRoute(builder: (context) => Home(user: FirebaseAuth.instance.currentUser!)),
                       );
                     }
                   },

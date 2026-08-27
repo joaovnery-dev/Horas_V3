@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class Auth {
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -71,4 +70,6 @@ class Auth {
       return "Erro desconhecido: $e";
     }
   }
+
+  
 }
